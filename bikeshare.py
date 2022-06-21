@@ -2,7 +2,6 @@ import time
 import pandas as pd
 import numpy as np
 
-
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -26,7 +25,6 @@ def get_filters():
         else:
             print("invalid input. Please enter a valid input")
 
-
     while True:
         month = input("Kindly select a month between january, february, march, april, may, and june, or  type 'all' to view all 6 months:   ")
         month = month.lower()
@@ -34,7 +32,6 @@ def get_filters():
             break
         else:
             print("invalid input. Please enter a valid input")
-
 
     while True:
         day = input("Kindly select a day of the week or type 'all' to view the 7 days of the week:   ")
@@ -45,7 +42,6 @@ def get_filters():
             print("invalid input. Please enter a valid input")
     print('-'*40)
     return city, month, day
-
 
 def load_data(city, month, day):
     """
@@ -84,26 +80,21 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day.title()]
     return df
 
-
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-
     print("Most common month:  ", df['month'].mode()[0], "\n")
-
 
     print("Most common day of week:  ", df['day_of_week'].mode()[0], "\n")
 
-    
     df['hour'] = df['Start Time'].dt.hour
     print("Most common start hour: ", df['hour'].mode()[0])
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
@@ -124,7 +115,6 @@ def station_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -139,7 +129,6 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def user_stats(df, city):
     """Displays statistics on bikeshare users."""
@@ -188,7 +177,6 @@ def main():
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-
 
 if __name__ == "__main__":
 	main()
